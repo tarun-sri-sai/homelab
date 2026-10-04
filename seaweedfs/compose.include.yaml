@@ -1,0 +1,69 @@
+services:
+  master:
+    command: master -ip=master -ip.bind=0.0.0.0 -metricsPort=9324
+    expose:
+      - "9333"
+      - "19333"
+      - "9324"
+    hostname: master
+    image: docker.io/chrislusf/seaweedfs:4.42
+    networks:
+      - seaweedfs_net
+    restart: unless-stopped
+    volumes:
+      - ${SEAWEEDFS_MASTER}:/data
+
+  volume:
+    command: volume -ip=volume -master="master:9333" -ip.bind=0.0.0.0 -port=8080 -metricsPort=9325
+    depends_on:
+      - master
+    expose:
+      - "8080"
+      - "18080"
+      - "9325"
+    hostname: volume
+    image: docker.io/chrislusf/seaweedfs:4.42
+    networks:
+      - seaweedfs_net
+    restart: unless-stopped
+    volumes:
+      - ${SEAWEEDFS_VOLUME}:/data
+
+  filer:
+    command: filer -ip=filer -master="master:9333" -ip.bind=0.0.0.0 -metricsPort=9326 -encryptVolumeData
+    depends_on:
+      - master
+      - volume
+    expose:
+      - "8888"
+      - "18888"
+      - "9326"
+    hostname: filer
+    image: docker.io/chrislusf/seaweedfs:4.42
+    networks:
+      - seaweedfs_net
+    restart: unless-stopped
+    volumes:
+      - ${SEAWEEDFS_FILER}:/data
+
+  s3:
+    command: s3 -filer="filer:8888" -ip.bind=0.0.0.0 -metricsPort=9327
+    depends_on:
+      - master
+      - volume
+      - filer
+    env_file: 
+      - .env
+    expose:
+      - "8333"
+      - "9327"
+    hostname: s3
+    image: docker.io/chrislusf/seaweedfs:4.42
+    networks:
+      - seaweedfs_net
+      - nginx_net
+    restart: unless-stopped
+
+networks:
+  seaweedfs_net:
+    internal: true

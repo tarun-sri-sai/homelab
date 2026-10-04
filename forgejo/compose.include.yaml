@@ -1,0 +1,17 @@
+include:
+  - ../postgres/compose.include.yaml
+
+services:
+  forgejo:
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    hostname: forgejo
+    image: codeberg.org/forgejo/forgejo:16.0.3
+    networks:
+      - postgres_net
+      - nginx_net
+    restart: unless-stopped
+    volumes:
+      - ${FORGEJO_DATA}:/data

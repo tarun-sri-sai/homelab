@@ -1,0 +1,23 @@
+services:
+  llama-server:
+    command: -hf google/gemma-4-E4B-it-qat-q4_0-gguf:Q4_0 --alias Gemma-4-E4B -c 32768 -n 12288 -ngl 999 -fa on -ctk q8_0 -ctv q4_0 -lv 4 -np 1 --no-mmproj --jinja --sleep-idle-seconds 900
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]
+              capabilities: [gpu]
+    environment:
+      HF_HOME: /models
+      HF_TOKEN: ${HF_TOKEN}
+    hostname: llama-server
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda-b10630
+    networks:
+      - llama_net
+    restart: unless-stopped
+    volumes:
+      - ${MODELS_PATH}:/models
+
+networks:
+  llama_net:

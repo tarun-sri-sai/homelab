@@ -1,0 +1,22 @@
+include:
+  - ../llama/compose.include.yaml
+
+services:
+  bifrost:
+    depends_on:
+      - llama-server
+    env_file:
+      - .env
+    hostname: bifrost
+    image: docker.io/maximhq/bifrost:v2.1.1-amd64
+    networks:
+      - llama_net
+      - nginx_net
+      - bifrost_net
+    restart: unless-stopped
+    volumes:
+      - ${BIFROST_DATA}:/app/data
+
+networks:
+  bifrost_net:
+    internal: true

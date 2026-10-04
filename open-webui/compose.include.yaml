@@ -1,0 +1,36 @@
+include:
+  - ../bifrost/compose.include.yaml
+
+services:
+  open-terminal:
+    env_file:
+      - .env
+    hostname: open-terminal
+    image: ghcr.io/open-webui/open-terminal:0.14.0-slim
+    networks:
+      - open-terminal_net
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+
+  open-webui:
+    depends_on:
+      - bifrost
+      - open-terminal
+    env_file:
+      - .env
+    hostname: open-webui
+    image: ghcr.io/open-webui/open-webui:0.11.4
+    networks:
+      - bifrost_net
+      - nginx_net
+      - open-terminal_net
+      - open-webui_net
+    restart: unless-stopped
+    volumes:
+      - ${OPEN_WEBUI_DATA}:/app/backend/data
+
+networks:
+  open-terminal_net:
+    internal: true
+  open-webui_net:
