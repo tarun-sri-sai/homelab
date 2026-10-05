@@ -1,0 +1,16 @@
+include:
+  - ../influxdb/compose.include.yaml
+
+services:
+  influxdb-ui:
+    command: --mode admin
+    depends_on:
+      - influxdb
+    hostname: influxdb-ui
+    image: docker.io/influxdata/influxdb3-ui:1.11.0
+    networks:
+      - nginx_net
+    restart: unless-stopped
+    volumes:
+      - ${INFLUXDB_UI_DB}:/db
+      - ${INFLUXDB_UI_CONFIG}:/app-root/config
