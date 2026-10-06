@@ -12,7 +12,7 @@ services:
       HF_HOME: /models
       HF_TOKEN: ${HF_TOKEN}
     hostname: llama-server
-    image: ghcr.io/ggml-org/llama.cpp:server-cuda-b10630
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda-v0.5.0
     networks:
       - llama_net
     restart: unless-stopped
