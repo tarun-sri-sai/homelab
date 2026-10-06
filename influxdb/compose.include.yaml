@@ -4,6 +4,7 @@ services:
     hostname: influxdb
     image: docker.io/library/influxdb:3.11.4-core
     networks:
+      - nginx_net
       - influxdb_net
     restart: unless-stopped
     volumes:
