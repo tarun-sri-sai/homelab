@@ -1,6 +1,6 @@
 services:
   llama-server:
-    command: --models-preset /etc/llama.cpp/router.ini
+    command: --models-preset /etc/llama.cpp/router.ini --models-max 1 -lv 4
     deploy:
       resources:
         reservations:
