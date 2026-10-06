@@ -9,6 +9,7 @@ services:
     hostname: influxdb-ui
     image: docker.io/influxdata/influxdb3-ui:1.11.0
     networks:
+      - influxdb_net
       - nginx_net
     restart: unless-stopped
     volumes:

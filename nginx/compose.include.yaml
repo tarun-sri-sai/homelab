@@ -4,7 +4,6 @@ include:
   - ../seaweedfs/compose.include.yaml
   - ../forgejo/compose.include.yaml
   - ../nextcloud/compose.include.yaml
-  - ../influxdb/compose.include.yaml
   - ../grafana/compose.include.yaml
   - ../dozzle/compose.include.yaml
   - ../jellyfin/compose.include.yaml
@@ -21,7 +20,6 @@ services:
       - open-webui
       - nextcloud
       - bifrost
-      - influxdb
       - grafana
       - dozzle
       - jellyfin
@@ -38,7 +36,6 @@ services:
       - "80:80"
       - "2222:2222"
       - "5650:5650"
-      - "8181:8181"
       - "5338:5338"
       - "8888:8888"
       - "8096:8096"
