@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     hostname: open-terminal
-    image: ghcr.io/open-webui/open-terminal:0.14.0-slim
+    image: ghcr.io/open-webui/open-terminal:0.14.0
     networks:
       - open-terminal_net
     restart: unless-stopped
