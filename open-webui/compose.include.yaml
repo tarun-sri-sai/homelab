@@ -20,7 +20,7 @@ services:
     env_file:
       - .env
     hostname: open-webui
-    image: ghcr.io/open-webui/open-webui:0.11.4
+    image: ghcr.io/open-webui/open-webui:0.12.0
     networks:
       - bifrost_net
       - nginx_net
