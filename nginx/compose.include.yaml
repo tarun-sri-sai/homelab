@@ -45,7 +45,7 @@ services:
       - "9211:9211"
     restart: unless-stopped
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx:/etc/nginx:ro
 
 networks:
   nginx_net:
