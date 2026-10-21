@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     hostname: nextcloud
-    image: docker.io/library/nextcloud:34.0.3-apache
+    image: docker.io/library/nextcloud:35.0.2-apache
     networks:
       - postgres_net
       - nginx_net
