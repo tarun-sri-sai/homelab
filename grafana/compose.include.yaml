@@ -19,3 +19,4 @@ services:
 
 networks:
   grafana_net:
+    internal: true  # comment this line when starting the container on an empty volume, uncomment after grafana plugins are loaded

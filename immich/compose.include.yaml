@@ -49,6 +49,7 @@ networks:
   immich_net:
     internal: true
   immich-machine-learning_net:
+    internal: true  # comment this line when starting the container on an empty volume, uncomment after immich ML models are downloaded and cached in model-cache
 
 volumes:
   model-cache:
