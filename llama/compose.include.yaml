@@ -11,7 +11,7 @@ services:
     environment:
       HF_HOME: /models
     hostname: llama-server
-    image: ghcr.io/ggml-org/llama.cpp:server-cuda-v0.5.0
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda13-b11669  # 0.7.0
     networks:
       - llama_net
     restart: unless-stopped
