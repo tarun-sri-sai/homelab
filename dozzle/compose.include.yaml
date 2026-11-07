@@ -7,3 +7,7 @@ services:
     restart: unless-stopped
     volumes:
       - /run/user/1000/podman/podman.sock:/var/run/docker.sock:ro
+      - ./users.yml:/data/users.yml
+    environment:
+      - DOZZLE_AUTH_PROVIDER=simple
+      - DOZZLE_DISABLE_SETUP_WIZARD=true
