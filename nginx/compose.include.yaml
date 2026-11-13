@@ -11,6 +11,7 @@ include:
   - ../bifrost/compose.include.yaml
   - ../open-webui/compose.include.yaml
   - ../influxdb-ui/compose.include.yaml
+  - ../freshrss/compose.include.yaml
 
 services:
   nginx:
@@ -26,6 +27,7 @@ services:
       - dozzle
       - jellyfin
       - influxdb-ui
+      - freshrss
     hostname: nginx
     image: docker.io/library/nginx:1.30.4-alpine
     networks:
@@ -43,6 +45,7 @@ services:
       - "8888:8888"
       - "8096:8096"
       - "9211:9211"
+      - "7955:7955"
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx:ro

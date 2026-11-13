@@ -1,0 +1,17 @@
+services:
+  freshrss:
+    env_file:
+      - .env
+    hostname: freshrss
+    image: docker.io/freshrss/freshrss:1.30.4-alpine
+    networks:
+      - postgres_net
+      - nginx_net
+      - freshrss_net
+    restart: unless-stopped
+    volumes:
+      - ${FRESHRSS_DATA}:/var/www/FreshRSS/data
+      - ${FRESHRSS_EXTENSIONS}:/var/www/FreshRSS/extensions
+
+networks:
+  freshrss_net:
