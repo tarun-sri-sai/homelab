@@ -2,7 +2,7 @@ services:
   influxdb:
     command: influxdb3 serve --node-id=node0 --object-store=file --data-dir=/var/lib/influxdb3/data --plugin-dir=/var/lib/influxdb3/plugins
     hostname: influxdb
-    image: docker.io/library/influxdb:3.11.4-core
+    image: docker.io/library/influxdb:3.12.2-core
     networks:
       - nginx_net
       - influxdb_net
