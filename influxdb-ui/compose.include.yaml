@@ -11,7 +11,7 @@ services:
     networks:
       - influxdb_net
       - nginx_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${INFLUXDB_UI_DB}:/db
       - ${INFLUXDB_UI_CONFIG}:/app-root/config

@@ -13,7 +13,7 @@ services:
       - influxdb_net
       - nginx_net
       - grafana_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${GRAFANA_DATA}:/var/lib/grafana
 

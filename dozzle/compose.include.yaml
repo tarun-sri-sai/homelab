@@ -4,7 +4,7 @@ services:
     image: docker.io/amir20/dozzle:v11.1.0-alpine
     networks:
       - nginx_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - /run/user/1000/podman/podman.sock:/var/run/docker.sock:ro
       - ./users.yml:/data/users.yml

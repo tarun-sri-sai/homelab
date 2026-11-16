@@ -13,7 +13,7 @@ services:
       - llama_net
       - nginx_net
       - bifrost_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${BIFROST_DATA}:/app/data
 

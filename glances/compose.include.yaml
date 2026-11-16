@@ -18,7 +18,7 @@ services:
     image: docker.io/nicolargo/glances:ubuntu-4.3.2-full
     network_mode: host
     pid: host
-    restart: unless-stopped
+    restart: always
     volumes:
       - "/:/rootfs:ro"
       - /run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro

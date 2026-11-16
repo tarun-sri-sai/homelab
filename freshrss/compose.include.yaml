@@ -8,7 +8,7 @@ services:
       - postgres_net
       - nginx_net
       - freshrss_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${FRESHRSS_DATA}:/var/www/FreshRSS/data
       - ${FRESHRSS_EXTENSIONS}:/var/www/FreshRSS/extensions

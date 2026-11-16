@@ -46,7 +46,7 @@ services:
       - "8096:8096"
       - "9211:9211"
       - "7955:7955"
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./nginx:/etc/nginx:ro
 

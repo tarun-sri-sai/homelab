@@ -9,7 +9,7 @@ services:
     image: docker.io/chrislusf/seaweedfs:4.42
     networks:
       - seaweedfs_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${SEAWEEDFS_MASTER}:/data
 
@@ -25,7 +25,7 @@ services:
     image: docker.io/chrislusf/seaweedfs:4.42
     networks:
       - seaweedfs_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${SEAWEEDFS_VOLUME}:/data
 
@@ -42,7 +42,7 @@ services:
     image: docker.io/chrislusf/seaweedfs:4.42
     networks:
       - seaweedfs_net
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${SEAWEEDFS_FILER}:/data
 
@@ -62,7 +62,7 @@ services:
     networks:
       - seaweedfs_net
       - nginx_net
-    restart: unless-stopped
+    restart: always
 
 networks:
   seaweedfs_net:
