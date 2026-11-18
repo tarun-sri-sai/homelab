@@ -4,13 +4,10 @@ include:
   - ../seaweedfs/compose.include.yaml
   - ../forgejo/compose.include.yaml
   - ../nextcloud/compose.include.yaml
-  - ../influxdb/compose.include.yaml
-  - ../grafana/compose.include.yaml
   - ../dozzle/compose.include.yaml
   - ../jellyfin/compose.include.yaml
   - ../bifrost/compose.include.yaml
   - ../open-webui/compose.include.yaml
-  - ../influxdb-ui/compose.include.yaml
   - ../freshrss/compose.include.yaml
 
 services:
@@ -22,11 +19,8 @@ services:
       - open-webui
       - nextcloud
       - bifrost
-      - influxdb
-      - grafana
       - dozzle
       - jellyfin
-      - influxdb-ui
       - freshrss
     hostname: nginx
     image: docker.io/library/nginx:1.30.4-alpine
@@ -40,11 +34,8 @@ services:
       - "80:80"
       - "2222:2222"
       - "5650:5650"
-      - "8181:8181"
-      - "5338:5338"
       - "8888:8888"
       - "8096:8096"
-      - "9211:9211"
       - "7955:7955"
     restart: always
     volumes:
